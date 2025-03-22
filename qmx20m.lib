@@ -1,0 +1,10 @@
+* LPF:
+.param c1 = 120p
+.param c2 = 270p
+.param c3 = 120p
+.param c4 = 15p
+.param l1 = 706n
+.param l2 = 640n
+* BPF:
+.param l11 = 1416.1n
+.param c11 = 56p

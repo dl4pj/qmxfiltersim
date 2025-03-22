@@ -1,9 +1,9 @@
 .title QMX FILTER SIMULATION
 .include "qmxfilters.lib"
 *.include "qmxp6m.lib"
-.include "qmx10m.lib"
+*.include "qmx10m.lib"
 *.include "qmx15m.lib"
-*.include "qmx20m.lib"
+.include "qmx20m.lib"
 
 
 V1 port1 0 DC 0 AC 1 portnum 1
@@ -28,14 +28,15 @@ Xbpf2 x port6 qmxbpf c1={c11} l1={l11}
 .control
 run
 
-set curplottitle="BPF"
-plot vdb(s_1_1) vdb(s_2_1)
+* set curplottitle="BPF"
+* plot vdb(s_1_1) vdb(s_2_1)
 
+let vswr = ( 1+ abs(s_3_3) ) / (1- abs(s_1_1))
 set curplottitle="LPF"
-plot vdb(s_3_3) vdb(s_4_3)
+plot vdb(s_3_3) vdb(s_4_3) vswr ylimit -120 10
 
-set curplottitle="LPF -> BPF"
-plot vdb(s_5_5) vdb(s_6_5)
+* set curplottitle="LPF -> BPF"
+* plot vdb(s_5_5) vdb(s_6_5)
 
 
 *set gnuplot_terminal=quit

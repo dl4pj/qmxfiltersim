@@ -1,0 +1,17 @@
+* QMX Filters
+
+* QMX LPF
+.subckt qmxlpf nIN nOUT l1=0 l2=0 c1=0 c2=0 c3=0 c4=0
+C1 nIN 0 {c1}
+L1 N001 nIN {l1}
+C2 N001 0 {c2}
+C3 nOUT 0 {c3}
+C4 nOUT N001 {c4}
+L2 nOUT N001 {l2}
+.ends
+
+* QMX BPF
+.subckt qmxbpf nIN nOUT c1=0 l1=0
+C1 nIN x {c1}
+L1 x nOUT {l1}
+.ends

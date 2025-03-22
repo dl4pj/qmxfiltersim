@@ -1,0 +1,15 @@
+* LPF:
+.param c1 = 100p
+.param c2 = 180p
+.param c3 = 82p
+.param c4 = 15p
+.param l1 = 314n
+.param l2 = 270n
+
+* BPF:
+.param start = 10Meg
+.param stop = 100Meg
+
+* SWEEP:
+.param start = 10Meg
+.param stop = 50Meg

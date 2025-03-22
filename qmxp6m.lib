@@ -5,11 +5,6 @@
 .param c4 = 10p
 .param l1 = 188n
 .param l2 = 160n
-
 * BPF:
 .param c11 = 15p
 .param l11 = 412n
-
-* SWEEP:
-.param start = 1k
-.param stop = 100Meg

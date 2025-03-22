@@ -13,4 +13,3 @@
 * SWEEP:
 .param start = 1Meg
 .param stop = 100Meg
-set filtname="QMX6m"

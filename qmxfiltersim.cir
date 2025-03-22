@@ -21,20 +21,19 @@ Xbpf2 x port6 qmxbpf c1={c11} l1={l11}
 .control
 run
 
-set curplottitle="BPF" + $filtname
+set curplottitle="BPF"
 plot vdb(s_1_1) vdb(s_2_1)
 
 set curplottitle="LPF"
 plot vdb(s_3_3) vdb(s_4_3)
 
-curplotname=myplot
 set curplottitle="LPF -> BPF"
 plot vdb(s_5_5) vdb(s_6_5)
 
 
-set gnuplot_terminal=quit
+*set gnuplot_terminal=quit
 
-*gnuplot BPF_S11 vdb(s_1_1) vdb(s_2_1) title "BPF_S11" xlabel "xxx" ylabel "***"
+* gnuplot BPF_S11 vdb(s_1_1) vdb(s_2_1) title "BPF_S11" xlabel "xxx" ylabel "***"
 * gnuplot BPF_S21 vdb(s_2_1)
 
 * gnuplot LPF_S11 vdb(s_3_3)

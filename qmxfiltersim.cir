@@ -1,6 +1,10 @@
 .title QMX FILTER SIMULATION
 .include "qmxfilters.lib"
-.include "qmxp6m.lib"
+*.include "qmxp6m.lib"
+.include "qmx10m.lib"
+*.include "qmx15m.lib"
+*.include "qmx20m.lib"
+
 
 V1 port1 0 DC 0 AC 1 portnum 1
 V2 port2 0 DC 0 portnum 2
@@ -16,6 +20,9 @@ Xlpf port3 port4 qmxlpf l1={l1} l2={l2} c1={c1} c2={c2} c3={c3} c4={c4}
 Xlpf2 x port5 qmxlpf l1={l1} l2={l2} c1={c1} c2={c2} c3={c3} c4={c4}
 Xbpf2 x port6 qmxbpf c1={c11} l1={l11}
 
+* SWEEP:
+.param start = 1Meg
+.param stop = 100Meg
 
 .sp lin 500 {start} {stop}
 .control

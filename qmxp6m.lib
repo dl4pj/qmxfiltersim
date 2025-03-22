@@ -11,5 +11,5 @@
 .param l11 = 412n
 
 * SWEEP:
-.param start = 1Meg
+.param start = 1k
 .param stop = 100Meg

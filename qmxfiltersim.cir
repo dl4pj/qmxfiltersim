@@ -1,8 +1,4 @@
 .title QMX FILTER SIMULATION
-* .include "qmxfilters.lib"
-
-* SWEEP:
-
 
 .control
 set hcopydevtype=svg
@@ -22,13 +18,12 @@ circbyline X1 p1 p2 $dut
 circbyline .end
 sp lin $points $start $stop
 set filename={$dut}.svg
-let vswr = ( 1+ abs(s_1_1) ) / (1.000000001 - abs(s_1_1)) 
-hardcopy ./out/$filename vdb(s_1_1) vdb(s_2_1) vswr ylimit -120 20 xlabel 'Frequency' ylabel 'Magnitude in dB / VSWR' title $dut
+let vswr = ( 1+ abs(s_1_1) ) / (1.000001 - abs(s_1_1)) 
+hardcopy ./out/$filename vdb(s_1_1) vdb(s_2_1)  vswr ylimit -70 10 xlabel 'Frequency' ylabel 'Magnitude in dB / VSWR' title $dut
 remcirc
 reset
 
 end ; foreach
-
 
 .endc
 .end

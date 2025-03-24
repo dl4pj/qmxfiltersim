@@ -15,20 +15,33 @@ ngspice -b qmxfiltersim.cir
 ./out/lpfbpf*m.svg: S11 + S21 + VSWR of first lowpass(reverse) then bandpass (receive use case)
 ```
 
-## Images
+## Original LPF Configuration
 
-![image info](out/bpf10m.svg)
-![image info](out/bpf15m.svg)
-![image info](out/bpf20m.svg)
-![image info](out/bpf6m.svg)
-![image info](out/lpf10m.svg)
-![image info](out/lpf15m.svg)
-![image info](out/lpf20m.svg)
-![image info](out/lpf6m.svg)
-![image info](out/lpfbpf10m.svg)
-![image info](out/lpfbpf15m.svg)
-![image info](out/lpfbpf20m.svg)
-![image info](out/lpfbpf6m.svg)
+| band      |   name |
+|-----------|--------|
+| 6m (QMX+) |  lpf6m |
+| 10/11/12m | lpf10m |
+| 15/17m    | lpf15m |
+| 20m       | lpf20m |
+
+![6m](out/lpf6m.svg)
+![10/11/12m](out/lpf10m.svg)
+![15/17m](out/lpf15m.svg)
+![20m](out/lpf20m.svg)
+
+## Original BPF Configuration
+
+![6m](out/bpf6m.svg)
+![10/11/12m](out/bpf10m.svg)
+![15/17m](out/bpf15m.svg)
+![20m](out/bpf20m.svg)
+
+## Receiving through LPF(reverse) and BPF
+
+![lpfbpf10m](out/lpfbpf10m.svg)
+![lpfbpf15m](out/lpfbpf15m.svg)
+![lpfbpf20m](out/lpfbpf20m.svg)
+![lpfbpf6m](out/lpfbpf6m.svg)
 
 ## Notes
 LC combinations of the BPF of QMX20-10

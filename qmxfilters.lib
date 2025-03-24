@@ -15,3 +15,97 @@ L2 nOUT N001 {l2}
 C1 nIN x {c1}
 L1 x nOUT {l1}
 .ends
+
+***** 6m *****
+
+.subckt lpf6m nIN nOUT
+.param c1 = 68p
+.param c2 = 120p
+.param c3 = 68p
+.param c4 = 10p
+.param l1 = 188n
+.param l2 = 160n
+Xlpf nIN nOUT qmxlpf l1={l1} l2={l2} c1={c1} c2={c2} c3={c3} c4={c4}
+.ends
+
+.subckt bpf6m nIN nOUT
+.param c11 = 15p
+.param l11 = 412n
+Xbpf nIN nOUT qmxbpf c1={c11} l1={l11}
+.ends
+
+.subckt lpfbpf6m nIN nOUT
+Xlpf x nIN lpf6m 
+Xbpf nOUT x bpf6m
+.ends
+
+***** 10m *****
+
+.subckt lpf10m nIN nOUT
+.param c1 = 100p
+.param c2 = 180p
+.param c3 = 82p
+.param c4 = 15p
+.param l1 = 314n
+.param l2 = 270n
+Xlpf nIN nOUT qmxlpf l1={l1} l2={l2} c1={c1} c2={c2} c3={c3} c4={c4}
+.ends
+
+.subckt bpf10m nIN nOUT
+.param l11 = 313.6nH
+.param c11 = 30p
+Xbpf nIN nOUT qmxbpf c1={c11} l1={l11}
+.ends
+
+.subckt lpfbpf10m nIN nOUT
+Xlpf x nIN lpf10m 
+Xbpf nOUT x bpf10m
+.ends
+
+***** 15m *****
+
+.subckt lpf15m nIN nOUT
+.param c1 = 220p
+.param c2 = 560p
+.param c3 = 270p
+.param c4 = 33p
+.param l1 = 286n
+.param l2 = 230n
+Xlpf nIN nOUT qmxlpf l1={l1} l2={l2} c1={c1} c2={c2} c3={c3} c4={c4}
+.ends
+
+.subckt bpf15m nIN nOUT
+.param l11 = 960.4n
+.param c11 = 33p
+Xbpf nIN nOUT qmxbpf c1={c11} l1={l11}
+.ends
+
+.subckt lpfbpf15m nIN nOUT
+Xlpf x nIN lpf15m 
+Xbpf nOUT x bpf15m
+.ends
+
+***** 20m *****
+
+.subckt lpf20m nIN nOUT
+.param c1 = 120p
+.param c2 = 270p
+.param c3 = 120p
+.param c4 = 15p
+.param l1 = 706n
+.param l2 = 640n
+Xlpf nIN nOUT qmxlpf l1={l1} l2={l2} c1={c1} c2={c2} c3={c3} c4={c4}
+.ends
+
+.subckt bpf20m nIN nOUT
+.param l11 = 1416.1n
+.param c11 = 56p
+Xbpf nIN nOUT qmxbpf c1={c11} l1={l11}
+.ends
+
+.subckt lpfbpf20m nIN nOUT
+Xlpf x nIN lpf20m 
+Xbpf nOUT x bpf20m
+.ends
+
+

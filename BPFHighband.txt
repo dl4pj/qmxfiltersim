@@ -1,6 +1,0 @@
-These are the Cs and combinations of the BPF of QMX20-10
-
-C403 30p  313.6nH  10m 
-C401 33p  529.9n 
-C404 33p  960.4n
-C402 56p  1416.1n  20m

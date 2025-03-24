@@ -1,54 +1,34 @@
 .title QMX FILTER SIMULATION
-.include "qmxfilters.lib"
-*.include "qmxp6m.lib"
-*.include "qmx10m.lib"
-*.include "qmx15m.lib"
-.include "qmx20m.lib"
-
-
-V1 port1 0 DC 0 AC 1 portnum 1
-V2 port2 0 DC 0 portnum 2
-V3 port3 0 DC 0 AC 1 portnum 3
-V4 port4 0 DC 0 portnum 4
-V5 port5 0 DC 0 AC 1 portnum 5
-V6 port6 0 DC 0 portnum 6
-
-
-Xbpf port1 port2 qmxbpf c1={c11} l1={l11}
-Xlpf port3 port4 qmxlpf l1={l1} l2={l2} c1={c1} c2={c2} c3={c3} c4={c4}
-
-Xlpf2 x port5 qmxlpf l1={l1} l2={l2} c1={c1} c2={c2} c3={c3} c4={c4}
-Xbpf2 x port6 qmxbpf c1={c11} l1={l11}
+* .include "qmxfilters.lib"
 
 * SWEEP:
-.param start = 1Meg
-.param stop = 100Meg
 
-.sp lin 500 {start} {stop}
+
 .control
-run
+set hcopydevtype=svg
 
-* set curplottitle="BPF"
-* plot vdb(s_1_1) vdb(s_2_1)
+set start = 1Meg
+set stop = 150Meg
+set points = 10000
 
-let vswr = ( 1+ abs(s_3_3) ) / (1- abs(s_1_1))
-set curplottitle="LPF"
-plot vdb(s_3_3) vdb(s_4_3) vswr ylimit -120 10
+foreach dut bpf6m bpf10m bpf15m bpf20m lpf6m lpf10m lpf15m lpf20m lpfbpf6m lpfbpf10m lpfbpf15m lpfbpf20m
 
-* set curplottitle="LPF -> BPF"
-* plot vdb(s_5_5) vdb(s_6_5)
+circbyline QMX Filters
+circbyline .include "qmxfilters.lib"
+circbyline V1  p1 0 DC 0 AC 1 portnum 1
+circbyline V2  p2 0 DC 0      portnum 2
+circbyline X1 p1 p2 $dut
 
+circbyline .end
+sp lin $points $start $stop
+set filename={$dut}.svg
+let vswr = ( 1+ abs(s_1_1) ) / (1.000000001 - abs(s_1_1)) 
+hardcopy ./out/$filename vdb(s_1_1) vdb(s_2_1) vswr ylimit -120 20 xlabel 'Frequency' ylabel 'Magnitude in dB / VSWR' title $dut
+remcirc
+reset
 
-*set gnuplot_terminal=quit
+end ; foreach
 
-* gnuplot BPF_S11 vdb(s_1_1) vdb(s_2_1) title "BPF_S11" xlabel "xxx" ylabel "***"
-* gnuplot BPF_S21 vdb(s_2_1)
-
-* gnuplot LPF_S11 vdb(s_3_3)
-* gnuplot LPF_S21 vdb(s_4_3)
-
-* gnuplot LPF_BPF_S21 vdb(s_5_5)
-* gnuplot LPF_BPF_S21 vdb(s_6_5)
 
 .endc
 .end

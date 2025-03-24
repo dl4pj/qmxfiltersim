@@ -17,7 +17,6 @@ ngspice -b qmxfiltersim.cir
 
 ## Images
 
-![image info](images/image.png)
 ![image info](out/bpf10m.svg)
 ![image info](out/bpf15m.svg)
 ![image info](out/bpf20m.svg)

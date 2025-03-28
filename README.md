@@ -1,7 +1,43 @@
-QMX filter simulation
-=====================
+QMX filter studies
+==================
+
+## Introduction
+
+QMX/QMX+ have lowpass and bandpass filters.
+My initial idea was to shift the QMX20-10m filters one band upwards to get a QMX17-6m.
+(The QMX80-20m already includes the 20m band.)
+
+A very interesting feature is the ability of the QMX to sweep the BPFs/LPFs on its own.
+When modifying the QMX, there are some difficulties:
+1. You can only measure LPF and BPF in combination
+2. We don't know the exact impedances and parasitic effects, so simulation is difficult
+3. The Quadrature Sampling Detector / Tayloe Detector (Dan Tayloe, N7VE) has special properties.
+
+Here I am documenting the results of my experiments (work in progress).
+
+## Testing the built-in measurement capabilities
+
+Before measuring my own filters, I am interested in the reliability of the built-in RF / LPF-sweep.
+The first test is to connect the built-in signal generator directly to the input of the taylor detector using a cap of 1nF.
+My expectation is, that the sweeps are sufficiently flat curves, so that testing the filters later does make sense.
+Also some ripples are allowed, because the QMX is not a precise measurement device but a very small, inexpensive, powersaving TRX.
+
+Here is the output:
+
+![6m](images/bypass6m.png)
+![10m](images/bypass10m.png)
+![11m](images/bypass11m.png)
+![12m](images/bypass12m.png)
+![15m](images/bypass15m.png)
+![17m](images/bypass17m.png)
+![20m](images/bypass20m.png)
+![FullSweep](images/bypassFullSweep.png)
+
+## Simulations
 
 Simulation of LPF and BPF filters of QMX (Highband) and QMX+ (6m) in NGSpice
+
+ATTENTION: these simulation are too simplistic!
 
 ## Call
 ```

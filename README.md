@@ -3,14 +3,14 @@ QMX filter studies
 
 ## Introduction
 
-QMX/QMX+ have lowpass and bandpass filters.
-My initial idea was to shift the QMX20-10m filters one band upwards to get a QMX17-6m.
-(The QMX80-20m already includes the 20m band.)
+I own a QMX+ and a QMX80-20m. Now I bought a QMX20-10m.
+My idea is to shift the QMX20-10m filters one band upwards to get a QMX17-6m.
+Will it work?
 
 A very interesting feature is the ability of the QMX to sweep the BPFs/LPFs on its own.
-When modifying the QMX, there are some difficulties:
-1. You can only measure LPF and BPF in combination
-2. We don't know the exact impedances and parasitic effects, so simulation is difficult
+When modifying the QMX, there are some challenges:
+1. You can only measure the LPF and the BPF in combination.
+2. We don't know the exact impedances and parasitic effects, so finding the correct parameters for simulations is difficult.
 3. The Quadrature Sampling Detector / Tayloe Detector (Dan Tayloe, N7VE) has special properties.
 
 Here I am documenting the results of my experiments (work in progress).
@@ -20,9 +20,9 @@ Here I am documenting the results of my experiments (work in progress).
 Before measuring my own filters, I am interested in the reliability of the built-in RF / LPF-sweep.
 The first test is to connect the built-in signal generator directly to the input of the taylor detector using a cap of 1nF.
 My expectation is, that the sweeps are sufficiently flat curves, so that testing the filters later does make sense.
-Also some ripples are allowed, because the QMX is not a precise measurement device but a very small, inexpensive, powersaving TRX.
+Also some ripples can be tolerated.
 
-Here is the output:
+### Output
 
 ![6m](images/bypass6m.png)
 ![10m](images/bypass10m.png)
@@ -31,13 +31,19 @@ Here is the output:
 ![15m](images/bypass15m.png)
 ![17m](images/bypass17m.png)
 ![20m](images/bypass20m.png)
+![20m-buggy](images/buggyplot.png)
 ![FullSweep](images/bypassFullSweep.png)
+
+### Conclusion
+- Besides a minimum at 24MHz the sweeps are sufficiently flat (1-2 dB variation).
+- Some frequency boundaries produce a bug resulting in extremely low values (<50dB)
+- The built-in sweep function is sufficiently exact verify the function of the filters. 
 
 ## Simulations
 
-Simulation of LPF and BPF filters of QMX (Highband) and QMX+ (6m) in NGSpice
+Simulation of LPF and BPF filters of QMX (High-band) and QMX+ (6m) in NGSpice
 
-ATTENTION: these simulation are too simplistic!
+ATTENTION: these simulations are too simplistic!
 
 ## Call
 ```
